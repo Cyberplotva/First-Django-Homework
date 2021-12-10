@@ -9,6 +9,12 @@ def index(request):
     contex['date'] = date.today().strftime("%d/%m/%Y")
     return render(request, 'index.html', contex)
 
+def riddle(request):
+    return render(request, 'riddle.html')
+
+
+def answer(request):
+    return render(request, 'answer.html')
 import os
 
 class ref:

@@ -21,5 +21,7 @@ from first import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.index),
+    path('riddle/', views.riddle),
+    path('answer/', views.answer),
     path('menu/', views.menu),
 ]
