@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+
+
+<html lang="ru">
+    <head>
+        <title> Таблица умножения </title>
+    </head>
+
+    <body>
+
+        <h1> Таблица умножения </h1>
+
+        <form method="POST" action="/multiply/process/">
+            {% csrf_token %}
+            <input type="number" name="number_field">
+        </form>
+        
+        
+        {% if number %}
+            <p> Number: {{ number }} </p>
+
+            {% for line in table %}
+                <p> {{ line }} </p>
+            {% endfor %}
+        {% endif %}
+
+    </body>
+</html>

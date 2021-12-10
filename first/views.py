@@ -9,12 +9,15 @@ def index(request):
     contex['date'] = date.today().strftime("%d/%m/%Y")
     return render(request, 'index.html', contex)
 
+
 def riddle(request):
     return render(request, 'riddle.html')
 
 
 def answer(request):
     return render(request, 'answer.html')
+
+
 import os
 
 class ref:
@@ -30,3 +33,21 @@ def menu(request):
     context['pages'] = [x if x.name != 'Index' else ref('First page', '/') for x in context['pages'] if x.name != 'Menu']
 
     return render(request, 'menu.html', context)
+
+
+def muliply(request):
+    return render(request, 'multiply.html')
+
+
+def process(request):
+    if request.method == 'POST':
+        context = {}
+        context['number'] = request.POST.get('number_field', None)
+        
+        n = int(context['number'])
+        l = []
+        for i in range(1, 11):
+            l.append(str(n) + ' * ' + str(i) + ' = ' + str(n * i))
+        context['table'] = l
+
+        return render(request, 'multiply.html', context)

@@ -24,4 +24,6 @@ urlpatterns = [
     path('riddle/', views.riddle),
     path('answer/', views.answer),
     path('menu/', views.menu),
+    path('multiply/', views.muliply),
+    path('multiply/process/', views.process),
 ]
