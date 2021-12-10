@@ -4,18 +4,6 @@ from django.shortcuts import render
 
 from datetime import date
 
-def index(request):
-    contex = {}
-    contex['date'] = date.today().strftime("%d/%m/%Y")
-    return render(request, 'index.html', contex)
-
-
-def riddle(request):
-    return render(request, 'riddle.html')
-
-
-def answer(request):
-    return render(request, 'answer.html')
 
 
 import os
@@ -25,21 +13,42 @@ class ref:
         self.name = name
         self.url = url
 
-def menu(request):
-    context = {}
+def add_menu(context):
     # Get pages' name from templates
     context['pages'] = [ref(x[:-5].capitalize(), '/' + x[:-5] + '/') for x in os.listdir('./first/templates')]
     # Filter pages
     context['pages'] = [x if x.name != 'Index' else ref('First page', '/') for x in context['pages'] if x.name != 'Menu']
 
-    return render(request, 'menu.html', context)
+    return context
 
+
+def index(request):
+    context = {}
+    context['date'] = date.today().strftime("%d/%m/%Y")
+    add_menu(context)
+    return render(request, 'index.html', context)
+
+
+def riddle(request):
+    context = {}
+    add_menu(context)
+    return render(request, 'riddle.html', context)
+
+
+def answer(request):
+    context = {}
+    add_menu(context)
+    return render(request, 'answer.html', context)
 
 def multiply(request):
-    return render(request, 'multiply.html')
+    context = {}
+    add_menu(context)
+    return render(request, 'multiply.html', context)
 
 
 def process(request):
+    context = {}
+    add_menu(context)
     if request.method == 'POST':
         context = {}
         context['number'] = request.POST.get('number_field', None)
@@ -50,4 +59,5 @@ def process(request):
             l.append(str(n) + ' * ' + str(i) + ' = ' + str(n * i))
         context['table'] = l
 
+        add_menu(context)
         return render(request, 'multiply.html', context)

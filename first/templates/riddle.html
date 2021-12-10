@@ -13,6 +13,17 @@
         <p> Какие 2 самые частые ошибки в программировании? </p>
 
         <a href="/answer/"> Ответ </a>
-
+        
+        <h1> Menu </h1>
+        <ul>
+            {% for page in pages %}
+            <li>
+                <a href={{ page.url }}> {{ page.name }} </a>
+            </li>
+            {% endfor %}
+        </ul>
+        
     </body>
+
+    
 </html>
