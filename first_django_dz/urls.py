@@ -22,4 +22,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('riddle/', views.riddle),
     path('answer/', views.answer),
+    path('menu/', views.menu),
 ]
