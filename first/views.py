@@ -35,7 +35,7 @@ def menu(request):
     return render(request, 'menu.html', context)
 
 
-def muliply(request):
+def multiply(request):
     return render(request, 'multiply.html')
 
 
