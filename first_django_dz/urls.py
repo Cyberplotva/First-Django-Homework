@@ -21,4 +21,5 @@ from first import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.index),
+    path('menu/', views.menu),
 ]
