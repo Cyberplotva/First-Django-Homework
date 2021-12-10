@@ -54,7 +54,9 @@ ROOT_URLCONF = 'first_django_dz.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [
+            'first/templates',
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
