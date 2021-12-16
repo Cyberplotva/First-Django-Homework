@@ -64,6 +64,7 @@ def process(request):
 
 
 from random import randint
+from first.models import Expression
 
 def expression(request):
     context = {}
@@ -82,5 +83,8 @@ def expression(request):
             context['expression'] += ' - ' + str(new_num)
     
     context['expression'] += ' = ' + str(result)
+
+    expression = Expression(syntax=context['expression'])
+    expression.save()
 
     return render(request, 'expression.html', context)
