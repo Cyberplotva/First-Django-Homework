@@ -7,12 +7,24 @@
     <title>History</title>
 </head>
 <body>
-    <table border="1">
-        <caption>History</caption>
+    {% if not expressions %}
+        <p>No expression history yet!</p>
+    {% else %}
+        <table border="1">
+            <caption>History</caption>
 
-        {% for exp in expressions %}
-        <tr><td>{{ exp }}</td></tr>
-        {% endfor %}
-    </table>
+            {% for exp in expressions %}
+            <tr><td>{{ exp }}</td></tr>
+            {% endfor %}
+        </table>
+    {% endif %}
+
+    <hr>
+    <h1>Menu v2</h1>
+    <ul>
+        <li><a href="/index/">Main page</a></li>
+        <li><a href="/expression/">Expression</a></li>
+        <li><a href="/history/">Expression history</a></li>
+    </ul>
 </body>
 </html>

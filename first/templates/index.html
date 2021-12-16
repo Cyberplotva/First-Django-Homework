@@ -14,6 +14,7 @@
         <p>Тема: "Знакомство с Django"</p>
         <p>Сегодня {{ date }}</p>
     
+        <hr>
         <h1> Menu </h1>
         <ul>
             {% for page in pages %}
@@ -23,5 +24,12 @@
             {% endfor %}
         </ul>
 
+        <hr>
+        <h1>Menu v2</h1>
+        <ul>
+            <li><a href="/index/">Main page</a></li>
+            <li><a href="/expression/">Expression</a></li>
+            <li><a href="/history/">Expression history</a></li>
+        </ul>
     </body>
 </html>
