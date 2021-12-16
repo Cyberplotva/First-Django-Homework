@@ -26,4 +26,5 @@ urlpatterns = [
     path('multiply/', views.multiply),
     path('multiply/process/', views.process),
     path('expression/', views.expression),
+    path('history/', views.history),
 ]

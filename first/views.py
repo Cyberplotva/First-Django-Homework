@@ -88,3 +88,7 @@ def expression(request):
     expression.save()
 
     return render(request, 'expression.html', context)
+
+def history(request):
+    context = {'expressions': Expression.objects.all()}
+    return render(request, 'history.html', context)
