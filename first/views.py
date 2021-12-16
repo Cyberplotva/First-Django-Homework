@@ -61,3 +61,26 @@ def process(request):
 
         add_menu(context)
         return render(request, 'multiply.html', context)
+
+
+from random import randint
+
+def expression(request):
+    context = {}
+
+    signs = ['+', '-']
+    result = randint(10, 99)
+    context['expression'] = str(result)
+    for _ in range(randint(1, 3)):
+        new_num = randint(10, 99)
+        sign_ind = randint(0, 4)
+        if sign_ind == 0:
+            result += new_num
+            context['expression'] += ' + ' + str(new_num)
+        else:
+            result -= new_num
+            context['expression'] += ' - ' + str(new_num)
+    
+    context['expression'] += ' = ' + str(result)
+
+    return render(request, 'expression.html', context)
