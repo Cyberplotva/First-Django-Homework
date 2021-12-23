@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>str2words</title>
+</head>
+<body>
+
+    <form action="/str2words/" method="POST">
+        {% csrf_token %}
+        {{ form }}
+        <br>
+        <input type="submit" value="OK">
+    </form>
+    <hr>
+
+    {% if s %}
+        <ul>
+            <li> String: {{ s }}</li>
+            <li> Word count: {{ word_count }}</li>
+            <li> Number count: {{ number_count }} </li>
+            <li>
+                Words:
+                <ol>
+                    {% for w in words %}
+                        <li>{{ w }}</li>
+                    {% endfor %}
+                </ol>
+            </li>
+            <li>
+                Numbers:
+                <ol>
+                    {% for n in numbers %}
+                        <li>{{ n }}</li>
+                    {% endfor %}
+                </ol>
+            </li>
+        </ul>
+    {% endif %}
+
+</body>
+</html>

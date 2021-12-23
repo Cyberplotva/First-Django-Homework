@@ -28,4 +28,5 @@ urlpatterns = [
     path('multiply/process/', views.process),
     path('expression/', views.expression),
     path('history/', views.history),
+    path('str2words/', views.str2words),
 ]

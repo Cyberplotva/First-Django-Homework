@@ -92,3 +92,28 @@ def expression(request):
 def history(request):
     context = {'expressions': Expression.objects.all()}
     return render(request, 'history.html', context)
+
+
+from .forms import Str2WordsForm
+
+def str2words(request):
+    context = {}
+    
+    if request.method == 'POST':
+        form = Str2WordsForm(request.POST)
+        if form.is_valid():
+            s = form.cleaned_data['string']
+            context['s'] = s
+            s = s.split()
+            
+            context['words'] = [x for x in s if not x.isnumeric()]
+            context['numbers'] = [x for x in s if x.isnumeric()]
+            context['word_count'] = len(context['words'])
+            context['number_count'] = len(context['numbers'])
+        else:
+            form = Str2WordsForm()
+    else:
+        form = Str2WordsForm()
+    
+    context['form'] = form
+    return render(request, 'str2words.html', context)
