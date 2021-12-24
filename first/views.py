@@ -99,13 +99,17 @@ def history(request):
 
 
 from .forms import Str2WordsForm
+from .models import Word
+from django.contrib.auth.decorators import login_required
 
+@login_required
 def str2words(request):
     context = {}
     
     if request.method == 'POST':
         form = Str2WordsForm(request.POST)
         if form.is_valid():
+            word = Word()
             s = form.cleaned_data['string']
             context['s'] = s
             s = s.split()
@@ -114,10 +118,25 @@ def str2words(request):
             context['numbers'] = [x for x in s if x.isnumeric()]
             context['word_count'] = len(context['words'])
             context['number_count'] = len(context['numbers'])
+
+            word.string = context['s']
+            word.word_count = context['word_count']
+            word.char_count = len(context['s'])
+            if request.user.is_authenticated:
+                word.user = request.user.username
+            word.save()
         else:
             form = Str2WordsForm()
     else:
         form = Str2WordsForm()
     
     context['form'] = form
+    add_menu(context)
     return render(request, 'str2words.html', context)
+
+@login_required
+def str_history(reqeust):
+    context= {}
+    context['words'] = Word.objects.filter(user=reqeust.user.username)
+    add_menu(context)
+    return render(reqeust, 'str_history.html', context)

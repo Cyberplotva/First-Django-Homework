@@ -29,4 +29,5 @@ urlpatterns = [
     path('history/', views.history),
     path('str2words/', views.str2words),
     path('accounts/', include('django.contrib.auth.urls')),
+    path('str_history/', views.str_history)
 ]

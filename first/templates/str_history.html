@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>str_history</title>
+</head>
+<body>
+    <h1>Your str2word history</h1>
+
+    <table border="1">
+        <tr>
+            <td>Date and time(UTC+0)</td>
+            <td>String</td>
+            <td>Word count</td>
+            <td>Char count</td>
+        </tr>
+        {% for w in words %}
+            <tr>
+                <td>{{ w.datetime }}</td>
+                <td>{{ w.string }}</td>
+                <td>{{ w.word_count }}</td>
+                <td>{{ w.char_count }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+
+    <hr>
+    <h1> Menu </h1>
+    <ul>
+        {% for page in pages %}
+        <li>
+            <a href={{ page.url }}> {{ page.name }} </a>
+        </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
