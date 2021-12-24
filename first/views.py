@@ -17,7 +17,7 @@ def add_menu(context):
     # Get pages' name from templates
     context['pages'] = [ref(x[:-5].capitalize(), '/' + x[:-5] + '/') for x in os.listdir('./first/templates')]
     # Filter pages
-    context['pages'] = [x if x.name != 'Index' else ref('First page', '/') for x in context['pages'] if x.name != 'Menu']
+    context['pages'] = [x if x.name != 'Index' else ref('First page', '/') for x in context['pages'] if x.name != 'Menu' and x.name != 'Registr']
 
     return context
 
@@ -26,6 +26,10 @@ def index(request):
     context = {}
     context['date'] = date.today().strftime("%d/%m/%Y")
     add_menu(context)
+
+    if request.user.is_authenticated:
+        context['username'] = request.user.username
+
     return render(request, 'index.html', context)
 
 

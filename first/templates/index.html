@@ -5,15 +5,26 @@
     <head>
         <title>Первая страница</title>
     </head>
-
+    
     <body>
 
         <h1>Курс "Промышленное программирование"</h1>
-
+        
         <p>Занятие №12</p>
         <p>Тема: "Знакомство с Django"</p>
         <p>Сегодня {{ date }}</p>
-    
+        
+        <hr>
+        {% if username %}
+            <p style="font-size: 30px">Hi, {{ username }}!!!</p>        
+        {% else %}
+            <p style="font-size: 30px">Hi, stranger! You aren't authenticated</p>
+        {% endif %}
+        
+        <hr>
+        <a href="/accounts/login/">Log in</a>
+        <a href="/accounts/logout/">Log out</a>
+
         <hr>
         <h1> Menu </h1>
         <ul>
@@ -31,5 +42,6 @@
             <li><a href="/expression/">Expression</a></li>
             <li><a href="/history/">Expression history</a></li>
         </ul>
+        
     </body>
 </html>
