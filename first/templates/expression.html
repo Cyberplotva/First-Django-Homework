@@ -4,17 +4,25 @@
     <head>
         <meta charset="UTF-8">
         <title> Expression </title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     </head>
 
     <body>
-        <p style="font-size: 50px"> {{ expression }} </p>
+        <header>
+            <h1> Expression </h1>
+        </header>
+        
+        <main>
+            <p> <strong> {{ expression }} </strong> </p>
+        </main>
+
+        <footer>
+            <hr>
+
+            <h2>Menu</h2>
+
+            <a href="/index/" class="badge badge-primary">Main page</a>
+            <a href="/history/" class="badge badge-primary">Expression history</a>
+        </footer>
     </body>
-    
-    <hr>
-    <h1>Menu v2</h1>
-    <ul>
-        <li><a href="/index/">Main page</a></li>
-        <li><a href="/expression/">Expression</a></li>
-        <li><a href="/history/">Expression history</a></li>
-    </ul>
 </html>

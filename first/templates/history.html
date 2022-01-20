@@ -5,26 +5,34 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>History</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
+
 <body>
-    {% if not expressions %}
-        <p>No expression history yet!</p>
-    {% else %}
-        <table border="1">
-            <caption>History</caption>
 
-            {% for exp in expressions %}
-            <tr><td>{{ exp }}</td></tr>
-            {% endfor %}
-        </table>
-    {% endif %}
+    <header>
+        <h1></h1>
+    </header>
+    
+    <main>
+        {% if not expressions %}
+            <p>No expression history yet!</p>
+        {% else %}
+            <table border="1">
+                <tr><th> History <th></th></tr>
+        
+                {% for exp in expressions %}
+                <tr><td>{{ exp }}</td></tr>
+                {% endfor %}
+            </table>
+        {% endif %}
+    </main>
 
-    <hr>
-    <h1>Menu v2</h1>
-    <ul>
-        <li><a href="/index/">Main page</a></li>
-        <li><a href="/expression/">Expression</a></li>
-        <li><a href="/history/">Expression history</a></li>
-    </ul>
+    <footer>
+        <hr>
+        <h2>Menu</h2>
+        <a href="/index/" class="badge badge-primary">Main page</a>
+        <a href="/expression/" class="badge badge-primary">Expression</a>
+    </footer>
 </body>
 </html>
