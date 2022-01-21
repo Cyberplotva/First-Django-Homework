@@ -18,21 +18,22 @@
         {% if not expressions %}
             <p>No expression history yet!</p>
         {% else %}
-            <table border="1">
-                <tr><th> History <th></th></tr>
+            <table border="1" class="table">
+                <thead class="thead-dark">
+                    <tr><th> History </th></tr>
+                </thead>
         
-                {% for exp in expressions %}
-                <tr><td>{{ exp }}</td></tr>
-                {% endfor %}
+                <tbody>
+                    {% for exp in expressions %}
+                    <tr><td>{{ exp }}</td></tr>
+                    {% endfor %}
+                </tbody>
             </table>
         {% endif %}
     </main>
 
     <footer>
-        <hr>
-        <h2>Menu</h2>
-        <a href="/index/" class="badge badge-primary">Main page</a>
-        <a href="/expression/" class="badge badge-primary">Expression</a>
+        {% include "menu2.html" %}
     </footer>
 </body>
 </html>

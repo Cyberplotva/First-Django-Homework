@@ -3,35 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <title>str_history</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
+
 <body>
     <h1>Your str2word history</h1>
 
-    <table border="1">
-        <tr>
-            <td>Date and time(UTC+0)</td>
-            <td>String</td>
-            <td>Word count</td>
-            <td>Char count</td>
-        </tr>
-        {% for w in words %}
-            <tr>
-                <td>{{ w.datetime }}</td>
-                <td>{{ w.string }}</td>
-                <td>{{ w.word_count }}</td>
-                <td>{{ w.char_count }}</td>
+    <main>
+        <table border="1" class="table">
+            <tr class="thead-dark">
+                <th>Date and time(UTC+0)</th>
+                <th>String</th>
+                <th>Word count</th>
+                <th>Char count</th>
             </tr>
-        {% endfor %}
-    </table>
-
-    <hr>
-    <h1> Menu </h1>
-    <ul>
-        {% for page in pages %}
-        <li>
-            <a href={{ page.url }}> {{ page.name }} </a>
-        </li>
-        {% endfor %}
-    </ul>
+            {% for w in words %}
+                <tr>
+                    <td>{{ w.datetime }}</td>
+                    <td>{{ w.string }}</td>
+                    <td>{{ w.word_count }}</td>
+                    <td>{{ w.char_count }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    </main>
+    
+    <footer>
+        {% include "menu2.html" %}
+    </footer>
 </body>
 </html>

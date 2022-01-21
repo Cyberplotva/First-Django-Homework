@@ -3,49 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <title>str2words</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 <body>
 
-    <form action="/str2words/" method="POST">
-        {% csrf_token %}
-        {{ form }}
-        <br>
-        <input type="submit" value="OK">
-    </form>
-    <hr>
-
-    {% if s %}
-        <ul>
-            <li> String: {{ s }}</li>
-            <li> Word count: {{ word_count }}</li>
-            <li> Number count: {{ number_count }} </li>
-            <li>
-                Words:
-                <ol>
-                    {% for w in words %}
-                        <li>{{ w }}</li>
-                    {% endfor %}
-                </ol>
-            </li>
-            <li>
-                Numbers:
-                <ol>
-                    {% for n in numbers %}
-                        <li>{{ n }}</li>
-                    {% endfor %}
-                </ol>
-            </li>
-        </ul>
-    {% endif %}
+    <main>
+        <form action="/str2words/" method="POST">
+            {% csrf_token %}
+            {{ form }}
+            <br>
+            <input type="submit" value="OK">
+        </form>
+        <hr>
     
-    <hr>
-    <h1> Menu </h1>
-    <ul>
-        {% for page in pages %}
-        <li>
-            <a href={{ page.url }}> {{ page.name }} </a>
-        </li>
-        {% endfor %}
-    </ul>
+        {% if s %}
+            <ul>
+                <li> String: {{ s }}</li>
+                <li> Word count: {{ word_count }}</li>
+                <li> Number count: {{ number_count }} </li>
+                <li>
+                    Words:
+                    <ol>
+                        {% for w in words %}
+                            <li>{{ w }}</li>
+                        {% endfor %}
+                    </ol>
+                </li>
+                <li>
+                    Numbers:
+                    <ol>
+                        {% for n in numbers %}
+                            <li>{{ n }}</li>
+                        {% endfor %}
+                    </ol>
+                </li>
+            </ul>
+        {% endif %}
+    </main>
+    
+    <footer>
+        {% include "menu2.html" %}
+    </footer>
 </body>
 </html>
